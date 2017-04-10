@@ -1,0 +1,29 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+class InsertionSort
+{
+    static void Main()
+    {
+        int[] input = Console.ReadLine().Split(' ').Select(int.Parse).ToArray();
+
+        for (int i = 0; i < input.Length-1; i++)
+        {
+            int current = i + 1; ;
+            while (current>0)
+            {
+                if (input[current]<input[current-1])
+                {
+                    int temp = input[current];
+                    input[current] = input[current - 1];
+                    input[current - 1] = temp;
+                }
+                current--;
+            }
+        }
+        Console.WriteLine(string.Join(" ",input));
+    }
+}

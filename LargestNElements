@@ -1,0 +1,33 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+class LargestNElements
+{
+    static void Main()
+    {
+        List<int> input = Console.ReadLine().Split(new[] { ' ' },StringSplitOptions.RemoveEmptyEntries).Select(int.Parse).ToList();
+        int largestElements = int.Parse(Console.ReadLine());
+        for (int i = 0; i < input.Count - 1; i++)
+        {
+            int current = i + 1;
+            while (current > 0)
+            {
+                if (input[current] < input[current - 1])
+                {
+                    int temp = input[current];
+                    input[current] = input[current - 1];
+                    input[current - 1] = temp;
+                }
+                current--;
+            }
+        }
+        input.Reverse();
+        for (int i = 0; i < largestElements; i++)
+        {
+            Console.Write(input[i]+" ");
+        }
+    }
+}
